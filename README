@@ -1,0 +1,23 @@
+There are two python files in this project:
+1. DataCollect.py: Web Scrapes the top5 URLs based on search query [Security question + Personality Name] and stores the data in the format [Personality Name_Website.txt]
+2. DataAnalysis.py: Performs the data cleaning and stores the file as [Personality Name_Website-cleaned.txt]. Performs the similarity comparison between the security question and each line of text using Spacy NLP vectors. Returns a json file with max similarity score and sentence.
+
+Note: The security questions need to be gathered manually
+
+These are the configureable parameters (global variables) in DataCollect.py:
+URL_COUNT = 4 #The count of URLs to scrape data from. 4 means 0 to 4 (5 URLs)
+URL_FILE = "URLs-record.csv" #Saves the URL records for refereence in a CSV file
+WEBSITE = ['bcs', 'united_airlines', 'usps', 'spectrum'] #add the website name to the list and the security question file should be in the format [questions-website.txt]
+PUBLIC_FIGURE = "Barack Obama" #Replace the public figure name for whom you want to gather data for.
+
+
+These are the configureable parameters (global variables) in DataAnalysis.py:
+
+nlp = spacy.load('en_core_web_lg') #Using lg (large) corpus of words for better results, sm (small) or md (medium) can be used for quicker results
+nlp.max_length = 10000000 #To buffer large amounts of data
+
+R = 2 #Number of questions to answered out of the given security questions.
+PERSONALITY = 'Elon Musk'#Replace it with the personality whose data is available
+INPUT_FILE = ['usps', 'united_airlines', 'bcs', 'spectrum'] #The data input file format is [Personality Name_Website-cleaned.txt] for search data doc and [questions-website.txt] for security question doc.
+
+The output will be returned as [Website-Personality Name.json]
