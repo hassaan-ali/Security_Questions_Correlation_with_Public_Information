@@ -14,7 +14,7 @@ nlp.max_length = 10000000
 R = 2 #Number of questions to answered
 #Fix this into a list to get personality name and input/output filename
 PERSONALITY = 'Elon Musk'
-INPUT_FILE = ['usps', 'united_airlines']
+INPUT_FILE = ['usps', 'united_airlines', 'bcs', 'spectrum']
 
 def cleanFile(input_filename, output_filename):
   with open(input_filename, 'r', buffering=1000000) as input_file, open(output_filename, 'a') as output_file:
